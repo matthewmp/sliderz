@@ -5,7 +5,7 @@ module.exports = {
 	entry: {
 		main: "./src/js"
 	},
-	mode: "production",
+	mode: "development",
 	output: {
 		filename: "[name]-bundle.js",
 		path: path.resolve(__dirname, "./dist")
@@ -18,6 +18,10 @@ module.exports = {
 				use: {
 					loader: "babel-loader"
 				}
+			},
+			{
+				test: /\.css$/,
+				use: ["style-loader", "css-loader", "postcss-loader"]
 			}
 		]
 	}

@@ -4,7 +4,7 @@
   "description": "Custom Cross Browser Range Sliders",
   "main": "index.js",
   "scripts": {
-    "build": "webpack src/js/index.js"
+    "build": "webpack src/js/index.js",
   },
   "repository": {
     "type": "git",
@@ -31,9 +31,14 @@
   },
   "homepage": "https://github.com/matthewmp/sliderz#readme",
   "devDependencies": {
+    "autoprefixer": "^9.1.3",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-env": "^2.4.1",
     "babel-loader": "^7.1.5",
+    "css-loader": "^1.0.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^0.23.0",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   }
