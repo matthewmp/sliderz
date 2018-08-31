@@ -29,5 +29,11 @@
   "bugs": {
     "url": "https://github.com/matthewmp/sliderz/issues"
   },
-  "homepage": "https://github.com/matthewmp/sliderz#readme"
+  "homepage": "https://github.com/matthewmp/sliderz#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-env": "^2.4.1",
+    "babel-loader": "^8.0.0",
+    "webpack": "^4.17.1"
+  }
 }
