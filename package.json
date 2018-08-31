@@ -1,0 +1,33 @@
+{
+  "name": "sliderz",
+  "version": "1.0.0",
+  "description": "Custom Cross Browser Range Sliders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewmp/sliderz.git"
+  },
+  "keywords": [
+    "custom",
+    "range",
+    "sliders",
+    "cross",
+    "browser",
+    "range",
+    "styling",
+    "range",
+    "input",
+    "css",
+    "range",
+    "input"
+  ],
+  "author": "Matthew Palumbo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthewmp/sliderz/issues"
+  },
+  "homepage": "https://github.com/matthewmp/sliderz#readme"
+}
