@@ -4,7 +4,7 @@
   "description": "Custom Cross Browser Range Sliders",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack src/js/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,8 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-env": "^2.4.1",
-    "babel-loader": "^8.0.0",
-    "webpack": "^4.17.1"
+    "babel-loader": "^7.1.5",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
   }
 }
