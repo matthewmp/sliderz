@@ -3,6 +3,14 @@ import * as el from './elements';
 
 // Flag head on mouse down event
 let head_MD = false;
+
+// Current divider location index to adjust head position
+let headPositionIndex;
+
+// Will be used to calculate width of head for more precise
+// positioning
+let width;
+
 // Find nearest value to snap head to dvider along track
 export const findNearest = (arr, num) => {
 	num = Math.floor(num);
@@ -26,26 +34,42 @@ export const findNearest = (arr, num) => {
 export const snapHeadToTrack = (e) => {
 	let rect;
 
-	// If click is on slider head calculate click coordinate
-	// relative to track
-	if(e.target.id !== 'sliderz_track'){
-		rect = e.target.offsetParent.getBoundingClientRect();
-	} else {
-		rect = e.target.getBoundingClientRect();
-	}
+	// Everything in if statement is only relevant for a click event
+	// on the track which needs the event object.  If called w/o an event
+	// object this code block is ignored, which likely means it was called
+	// due to a window resize event
+
+	if(e){
+		// If click is on slider head calculate click coordinate
+		// relative to track
+		if(e.target.id !== 'sliderz_track'){
+			rect = e.target.offsetParent.getBoundingClientRect();
+		} else {
+			rect = e.target.getBoundingClientRect();
+		}
+		
+		// Clicked coordinate
+		const xPos = e.clientX - rect.left;
+
+		// Move head to position
+		el.sliderz_head.style.left = `${xPos}px`;
+
+		// Get head width to adjust position
+		width = el.sliderz_head.offsetWidth;
+
+		// Find nearest snap location for divider and position head there
+		headPositionIndex = findNearest(dividerLocations, (e.clientX - rect.left));
+		el.sliderz_head.style.left = `${dividerLocations[headPositionIndex] + (width / 2)}px`;
+	} 
+
 	
-	// Clicked coordinate
-	const xPos = e.clientX - rect.left;
-
-	// Move head to position
-	el.sliderz_head.style.left = `${xPos}px`;
-
-	// Get head width to adjust position
-	const width = el.sliderz_head.offsetWidth;
-
-	// Find nearest snap location for divider and position head there
-	const headPositionIndex = findNearest(dividerLocations, (e.clientX - rect.left));
-	el.sliderz_head.style.left = `${dividerLocations[headPositionIndex] + (width / 2)}px`;
+	if(!e){
+		// Get head width to adjust position
+		width = el.sliderz_head.offsetWidth;
+		
+		// Find nearest snap location for divider and position head there
+		el.sliderz_head.style.left = `${dividerLocations[headPositionIndex] + (width / 2)}px`;
+	}
 
 	// Find index of last dividerLocation
 	const lastDividerIndex = dividerLocations.length-1;

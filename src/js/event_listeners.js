@@ -9,6 +9,7 @@ export const resizeListener = () => {
 		// Store current width of slider track
 		el.trackSize = el.sliderz_track.offsetWidth;
 		dividers.addDividers();
+		snapHeadToTrack();
 	});
 }
 
