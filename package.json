@@ -4,7 +4,7 @@
   "description": "Custom Cross Browser Range Sliders",
   "main": "index.js",
   "scripts": {
-    "build": "webpack src/js/index.js",
+    "build": "webpack src/js/index.js"
   },
   "repository": {
     "type": "git",

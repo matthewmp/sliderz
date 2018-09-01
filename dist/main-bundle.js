@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"#sliderz_wrapper{\\n  position: relative;\\n  display: block;\\n  width: 100%;\\n  height: 20px;\\n  border: 1px solid black;\\n}\\n\\n#sliderz_track{\\n  position: absolute;\\n  top: 50%;\\n  -webkit-transform: translate(0%, -50%);\\n          transform: translate(0%, -50%);\\n  display: block;\\n  width: 100%;\\n  height: 10px;\\n  border: 1px solid pink;\\n  background: lightblue;\\n}\\n\\n#sliderz_head{\\n  position: absolute;\\n  top: 50%;\\n  left: 50%;\\n  -webkit-transform: translate(-50%, -50%);\\n          transform: translate(-50%, -50%);\\n  width: 2%;\\n  height: 30px;\\n  border: 1px solid green;\\n  margin: auto;\\n}\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/css/main.css?./node_modules/css-loader!./node_modules/postcss-loader/src");
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"*{\\n  padding: 0;\\n  margin: 0;\\n}\\n\\n#sliderz_wrapper{\\n  position: relative;\\n  display: block;\\n  width: 50%;\\n  height: 20px;\\n  margin: 100px auto;\\n}\\n\\n#sliderz_track{\\n  position: absolute;\\n  top: 50%;\\n  -webkit-transform: translate(0%, -50%);\\n          transform: translate(0%, -50%);\\n  display: block;\\n  width: 100%;\\n  height: 10px;\\n  background: lightblue;\\n  cursor: pointer;\\n}\\n\\n#sliderz_head{\\n  position: absolute;\\n  top: 50%;\\n  left: 50%;\\n  -webkit-transform: translate(-50%, -50%);\\n          transform: translate(-50%, -50%);\\n  background: lightblue;\\n  width: 10px;\\n  height: 30px;\\n  border: 1px solid green;\\n  margin: auto;\\n  z-index: 999;\\n}\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/css/main.css?./node_modules/css-loader!./node_modules/postcss-loader/src");
 
 /***/ }),
 
@@ -141,6 +141,18 @@ eval("\nvar content = __webpack_require__(/*! !../../node_modules/css-loader!../
 
 /***/ }),
 
+/***/ "./src/js/dividers.js":
+/*!****************************!*\
+  !*** ./src/js/dividers.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nvar dividerLocations = exports.dividerLocations = [];\n\nvar addDividers = exports.addDividers = function addDividers() {\n\n\t// Grab all existing dividers\n\tvar existingDividers = document.getElementsByClassName('divider');\n\n\t// Remove all existing dividers\n\tif (existingDividers) {\n\t\twhile (existingDividers[0]) {\n\t\t\texistingDividers[0].parentNode.children[1].remove();\n\t\t}\n\t}\n\n\t// Grab parent element\n\tvar container = document.getElementById('sliderz');\n\n\t// Get range values\n\tvar d_min = container.dataset.min;\n\tvar d_max = container.dataset.max;\n\n\t// Grab track\n\tvar track = document.getElementById('sliderz_track');\n\n\t// Calculate space between dividers\n\tvar initialLength = Math.ceil(track.offsetWidth / d_max - 1);\n\tvar dividersLength = initialLength + initialLength / d_max;\n\tvar spacing = 0;\n\n\t// Clear divider locations\n\tdividerLocations.length = 0;\n\n\t// Add correct amount of dividers with equal spacing\n\tfor (var i = 0; i < d_max; i++) {\n\n\t\tvar divider = document.createElement('div');\n\t\tdivider.classList.add('divider');\n\t\tdivider.style.position = 'absolute';\n\t\tdivider.style.width = '2px';\n\t\tdivider.style.height = '10px';\n\t\tdivider.style.top = '10px';\n\t\tdivider.style.background = '#000';\n\t\tconsole.log('resizing');\n\t\tdivider.style.left = spacing + 1 + 'px';\n\n\t\t// Add each unit of separation between dividers to dividerLoacations\n\t\tdividerLocations.push(spacing);\n\n\t\tspacing += dividersLength;\n\n\t\t// If last set to very end\n\t\tif (i === d_max - 1) {\n\t\t\tconsole.log('MAX', parseInt(divider.style.width) / 2);\n\t\t\tdivider.style.left = track.offsetWidth - Math.ceil(parseInt(divider.style.width)) + 'px';\n\t\t}\n\n\t\t// Add divider to track\n\t\ttrack.appendChild(divider);\n\t}\n};\n\n//# sourceURL=webpack:///./src/js/dividers.js?");
+
+/***/ }),
+
 /***/ "./src/js/elements.js":
 /*!****************************!*\
   !*** ./src/js/elements.js ***!
@@ -149,7 +161,31 @@ eval("\nvar content = __webpack_require__(/*! !../../node_modules/css-loader!../
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nvar sliderz_wrapper = exports.sliderz_wrapper = document.createElement('div');\nvar sliderz_track = exports.sliderz_track = document.createElement('div');\nvar sliderz_head = exports.sliderz_head = document.createElement('div');\n// Build main elements for slider\nwindow.onload = function () {\n\n\t// Add IDs\n\tsliderz_wrapper.setAttribute('id', 'sliderz_wrapper');\n\tsliderz_track.setAttribute('id', 'sliderz_track');\n\tsliderz_head.setAttribute('id', 'sliderz_head');\n\n\t// Append divs to each other\n\tsliderz_track.appendChild(sliderz_head);\n\tsliderz_wrapper.appendChild(sliderz_track);\n\n\t// Add all elements to document\n\tdocument.body.appendChild(sliderz_wrapper);\n};\n\n//# sourceURL=webpack:///./src/js/elements.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nexports.createElements = exports.d_width = exports.d_max = exports.d_min = exports.container = exports.trackSize = exports.sliderz_head = exports.sliderz_track = exports.sliderz_wrapper = undefined;\n\nvar _event_listeners = __webpack_require__(/*! ./event_listeners */ \"./src/js/event_listeners.js\");\n\nvar listeners = _interopRequireWildcard(_event_listeners);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\n// Create and append all elements for sliderz\n\nvar sliderz_wrapper = exports.sliderz_wrapper = document.createElement('div');\nvar sliderz_track = exports.sliderz_track = document.createElement('div');\nvar sliderz_head = exports.sliderz_head = document.createElement('div');\n\n// This will hold the width of the slider track\nvar trackSize = exports.trackSize = 0;\n\nvar container = exports.container = null;\nvar d_min = exports.d_min = null;\nvar d_max = exports.d_max = null;\nvar d_width = exports.d_width = null;\n\n// Build main elements for slider\n\nvar createElements = exports.createElements = function createElements() {\n\t// Grab container\n\texports.container = container = document.getElementById('sliderz');\n\n\t// Grab container attributes\n\texports.d_min = d_min = container.dataset.min;\n\texports.d_max = d_max = container.dataset.max;\n\texports.d_width = d_width = container.dataset.width;\n\n\t// Add IDs\n\tsliderz_wrapper.setAttribute('id', 'sliderz_wrapper');\n\tsliderz_track.setAttribute('id', 'sliderz_track');\n\tsliderz_head.setAttribute('id', 'sliderz_head');\n\n\t// Append divs to each other\n\tsliderz_track.appendChild(sliderz_head);\n\tsliderz_wrapper.appendChild(sliderz_track);\n\n\t// Add all elements to document\n\tcontainer.appendChild(sliderz_wrapper);\n};\n\n//# sourceURL=webpack:///./src/js/elements.js?");
+
+/***/ }),
+
+/***/ "./src/js/event_listeners.js":
+/*!***********************************!*\
+  !*** ./src/js/event_listeners.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nexports.track_listener = exports.resizeListener = undefined;\n\nvar _elements = __webpack_require__(/*! ./elements */ \"./src/js/elements.js\");\n\nvar el = _interopRequireWildcard(_elements);\n\nvar _dividers = __webpack_require__(/*! ./dividers */ \"./src/js/dividers.js\");\n\nvar dividers = _interopRequireWildcard(_dividers);\n\nvar _head = __webpack_require__(/*! ./head */ \"./src/js/head.js\");\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nvar resizeListener = exports.resizeListener = function resizeListener() {\n\twindow.addEventListener('resize', function (e) {\n\n\t\t// Store current width of slider track\n\t\tel.trackSize = el.sliderz_track.offsetWidth;\n\t\tdividers.addDividers();\n\t});\n};\n\n// Listen for click on sliderz track\nvar track_listener = exports.track_listener = function track_listener() {\n\t// Add event listener to track\n\tel.sliderz_track.addEventListener('click', function (e) {\n\t\t(0, _head.snapHeadToTrack)(e);\n\t});\n};\n\n//# sourceURL=webpack:///./src/js/event_listeners.js?");
+
+/***/ }),
+
+/***/ "./src/js/head.js":
+/*!************************!*\
+  !*** ./src/js/head.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nexports.snapHeadToTrack = exports.findNearest = undefined;\n\nvar _dividers = __webpack_require__(/*! ./dividers */ \"./src/js/dividers.js\");\n\nvar _elements = __webpack_require__(/*! ./elements */ \"./src/js/elements.js\");\n\nvar el = _interopRequireWildcard(_elements);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\n// Find nearest value to snap head to dvider along track\nvar findNearest = exports.findNearest = function findNearest(arr, num) {\n\tnum = Math.floor(num);\n\tvar currentIndex = 0;\n\tvar currentValue = arr[0];\n\n\tarr.forEach(function (element, ind, arr) {\n\t\tvar val1 = Math.abs(num - currentValue);\n\t\tvar val2 = Math.abs(num - arr[ind + 1]);\n\t\tif (val1 <= val2 || isNaN(val2)) {\n\t\t\tcurrentValue = currentValue;\n\t\t\tcurrentIndex = currentIndex;\n\t\t} else {\n\t\t\tcurrentValue = arr[ind + 1];\n\t\t\tcurrentIndex = ind + 1;\n\t\t}\n\t});\n\treturn currentIndex;\n};\n\nvar snapHeadToTrack = exports.snapHeadToTrack = function snapHeadToTrack(e) {\n\tvar rect = void 0;\n\n\t// If click is on slider head calculate click coordinate\n\t// relative to track\n\tif (e.target.id !== 'sliderz_track') {\n\t\trect = e.target.offsetParent.getBoundingClientRect();\n\t} else {\n\t\trect = e.target.getBoundingClientRect();\n\t}\n\n\t// Clicked coordinate\n\tvar xPos = e.clientX - rect.left;\n\n\t// Move head to position\n\tel.sliderz_head.style.left = xPos + 'px';\n\n\t// Get head width to adjust position\n\tvar width = el.sliderz_head.offsetWidth;\n\n\tvar headPositionIndex = findNearest(_dividers.dividerLocations, e.clientX - rect.left);\n\tel.sliderz_head.style.left = _dividers.dividerLocations[headPositionIndex] + width / 2 + 'px';\n};\n\n//# sourceURL=webpack:///./src/js/head.js?");
 
 /***/ }),
 
@@ -161,19 +197,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ../css/main.css */ \"./src/css/main.css\");\n\n__webpack_require__(/*! ./elements */ \"./src/js/elements.js\");\n\n__webpack_require__(/*! ./test.js */ \"./src/js/test.js\");\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("\n\n__webpack_require__(/*! ../css/main.css */ \"./src/css/main.css\");\n\n__webpack_require__(/*! ./event_listeners */ \"./src/js/event_listeners.js\");\n\n__webpack_require__(/*! ./elements */ \"./src/js/elements.js\");\n\n__webpack_require__(/*! ./initialize */ \"./src/js/initialize.js\");\n\n__webpack_require__(/*! ./head */ \"./src/js/head.js\");\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
-/***/ "./src/js/test.js":
-/*!************************!*\
-  !*** ./src/js/test.js ***!
-  \************************/
+/***/ "./src/js/initialize.js":
+/*!******************************!*\
+  !*** ./src/js/initialize.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _elements = __webpack_require__(/*! ./elements */ \"./src/js/elements.js\");\n\nvar elements = _interopRequireWildcard(_elements);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nelements.sliderz_track.style.background = 'red';\n\n//# sourceURL=webpack:///./src/js/test.js?");
+eval("\n\nvar _elements = __webpack_require__(/*! ./elements */ \"./src/js/elements.js\");\n\nvar _event_listeners = __webpack_require__(/*! ./event_listeners */ \"./src/js/event_listeners.js\");\n\nvar listeners = _interopRequireWildcard(_event_listeners);\n\nvar _dividers = __webpack_require__(/*! ./dividers */ \"./src/js/dividers.js\");\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\ndocument.addEventListener(\"DOMContentLoaded\", function (event) {\n\t// Create all elements for sliders\n\t(0, _elements.createElements)();\n\n\t// Activate all listeners\n\tlisteners.resizeListener();\n\tlisteners.track_listener();\n\n\t// Add dividers to slider\n\t(0, _dividers.addDividers)();\n});\n\n//# sourceURL=webpack:///./src/js/initialize.js?");
 
 /***/ })
 
