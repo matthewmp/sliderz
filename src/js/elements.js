@@ -34,7 +34,6 @@ export const createElementsAttributes = () => {
 	d_max = container.dataset.max;
 	d_step = container.dataset.step;
 	d_jq_selector = container.dataset.jq || null;
-	console.log('elements: ', d_id, d_class, d_jq_selector);
 	
 	// Add IDs
 	sliderz_wrapper.setAttribute('id', 'sliderz_wrapper');

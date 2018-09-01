@@ -52,7 +52,6 @@ export const setCurrentValueOfDataLocation = (headIndex) => {
 
 
 	const value = dataLocations[headIndex];
-	console.log(selector, value);
 	switch(selector.type){
 		case 'jq':
 			$(selector.value).val(value);
