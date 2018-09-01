@@ -46,7 +46,6 @@ export const addDividers = () => {
 		divider.style.height = '10px';
 		divider.style.top = '10px';
 		divider.style.background = '#000';
-		console.log('resizing');
 		divider.style.left = `${spacing + 1}px`;
 		
 		// Add each unit of separation between dividers to dividerLoacations
@@ -56,7 +55,6 @@ export const addDividers = () => {
 
 		// If last set to very end
 		if(i === d_max - 1){
-			console.log('MAX', parseInt(divider.style.width) /2);
 			divider.style.left = `${track.offsetWidth - (Math.ceil(parseInt(divider.style.width)))}px`;
 		}
 
