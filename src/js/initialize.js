@@ -1,10 +1,10 @@
-import { createElements } from './elements';
+import { createElementsAttributes } from './elements';
 import * as listeners from './event_listeners';
 import { addDividers } from './dividers';
 
 document.addEventListener("DOMContentLoaded", function(event) { 
 	// Create all elements for sliders
-	createElements();
+	createElementsAttributes();
 
 	// Activate all listeners
 	listeners.resizeListener();

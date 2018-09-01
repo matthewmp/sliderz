@@ -1,5 +1,6 @@
 import { dividerLocations } from './dividers';
 import * as el from './elements';
+import { setCurrentValueOfDataLocation } from './data';
 
 // Flag head on mouse down event
 let head_MD = false;
@@ -84,6 +85,8 @@ export const snapHeadToTrack = (e) => {
 		const lastDividerPosition = lastDivider.offsetLeft;
 		el.sliderz_head.style.left = `${lastDividerPosition}px`;
 	}
+
+	setCurrentValueOfDataLocation(headPositionIndex);
 }
 
 export const dragHead = (e) => {

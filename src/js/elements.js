@@ -10,22 +10,31 @@ export const sliderz_head = document.createElement('div');
 // This will hold the width of the slider track
 export let trackSize = 0;
 
-// Set initial values
+// Set initial values of container and data attributes
 export let container = null;
-export let d_min = null;
-export let d_max = null;
-export let d_width = null;
+export let d_dividers = null; // number of dividers data attribute
+export let d_id = null // id of related input to match value
+export let d_class = null // class of related input to match value
+export let d_jq_selector = null // jquery selector if one
+export let d_min = null // min data attribute
+export let d_max = null // max data attribute
+export let d_step = null // step data attribute
 
 // Build main elements for slider
 
-export const createElements = () => {
+export const createElementsAttributes = () => {
 	// Grab container
 	container = document.getElementById('sliderz'); 
 
 	// Grab container attributes
+	d_dividers = container.dataset.dividers;
+	d_id = container.dataset.id || null;
+	d_class = container.dataset.class || null;
 	d_min = container.dataset.min;
 	d_max = container.dataset.max;
-	d_width = container.dataset.width;
+	d_step = container.dataset.step;
+	d_jq_selector = container.dataset.jq || null;
+	console.log('elements: ', d_id, d_class, d_jq_selector);
 	
 	// Add IDs
 	sliderz_wrapper.setAttribute('id', 'sliderz_wrapper');

@@ -1,3 +1,4 @@
+import { allocateDataLocations } from './data';
 
 // This will store the locations in pixels of all dividers
 // to be used to position them and to snap head to each one
@@ -22,21 +23,21 @@ export const addDividers = () => {
 
 	// Get range values
 	let d_min = container.dataset.min;
-	let d_max = container.dataset.max;
+	let d_dividers = container.dataset.dividers;
 
 	// Grab track
 	let track = document.getElementById('sliderz_track')
 
 	// Calculate space between dividers
-	let initialLength = Math.ceil(track.offsetWidth / d_max - 1);
-	let dividersLength = initialLength + (initialLength / d_max);
+	let initialLength = Math.ceil(track.offsetWidth / d_dividers - 1);
+	let dividersLength = initialLength + (initialLength / d_dividers);
 	let spacing = 0;
 
 	// Clear divider locations
 	dividerLocations.length = 0;
 
 	// Add correct amount of dividers with equal spacing
-	for(let i = 0; i < d_max; i++){
+	for(let i = 0; i < d_dividers; i++){
 		
 		// Create element and basic style
 		let divider = document.createElement('div');
@@ -54,11 +55,12 @@ export const addDividers = () => {
 		spacing += dividersLength;
 
 		// If last set to very end
-		if(i === d_max - 1){
+		if(i === d_dividers - 1){
 			divider.style.left = `${track.offsetWidth - (Math.ceil(parseInt(divider.style.width)))}px`;
 		}
 
 		// Add divider to track
 		track.appendChild(divider);
 	}
+	allocateDataLocations();
 }
