@@ -3,4 +3,4 @@ Sliderz is a cross-browser resonsive slider for recording data into an input fie
 being free to style as the developer sees fit.
 
 #Screenshots
-![sliderz gif] (https://raw.githubusercontent.com/matthewmp/sliderz/master/sliderz.gif)
+![sliderz gif] (https://raw.githubusercontent.com/matthewmp/sliderz/master/sliderz.gif "Sliderz")
