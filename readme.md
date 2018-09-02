@@ -23,6 +23,7 @@ Add the data attributes to the sliderz div to denote the minimum value, maximum 
     <div id="sliderz" data-min="1" data-max="20" data-step="1"></div>
 
 Lastly add the id, class, or jQuery selector of the input element that will record the data. The following selector types can be used:
+   
     data-id="id of input element" data-class="class of input element" data-jq="jQuery selector"
 
 If there are more than one selector attribute Sliderz will follow the following order of precedence:
