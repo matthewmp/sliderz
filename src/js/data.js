@@ -13,7 +13,7 @@ export const allocateDataLocations = () => {
 	dataLocations.length = 0;
 
 	const min = parseInt(d_min);
-	const max = parseInt(d_max);
+	const max = parseInt(d_max) + 1;
 	const step = parseInt(d_step);
 	let currentValue = parseInt(min);
 
@@ -26,7 +26,6 @@ export const allocateDataLocations = () => {
 
 // Set the input value to the current data location
 export const setCurrentValueOfDataLocation = (headIndex) => {
-
 	// Grab selectors if set
 	const containers = document.getElementById('sliderz');
 	const d_id = containers.dataset.id || null;
@@ -39,34 +38,58 @@ export const setCurrentValueOfDataLocation = (headIndex) => {
 
 	if(d_class){
 		selector.value = d_class;
-		selector.type = 'class';
+		selector.selectorType = 'class';
 	}
 	if(d_id){
 		selector.value = d_id;
-		selector.type = 'id';
+		selector.selectorType = 'id';
 	}
 	if(d_jq_selector){
 		selector.value = d_jq_selector;
-		selector.type = 'jq';
+		selector.selectorType = 'jq';
 	}
-
-
+	
+    
 	const value = dataLocations[headIndex];
-	switch(selector.type){
+	switch(selector.selectorType){
 		case 'jq':
-			$(selector.value).val(value);
-			break;
+			var inputSelector = $(selector.value);
+			if(inputSelector){
+				if($(selector.value).type === 'number'){
+					$(selector.value).val(parseInt(value));
+					break;
+				} else {
+					$(selector.value).val(value);	
+				}
+				break;
+			}
 
 		case 'id':
-			document.getElementById(selector.value).value = value;
-			break;
+			var inputSelector = document.getElementById(selector.value);
+			if(inputSelector){
+				if(inputSelector.type === 'number'){
+					inputSelector.value = parseInt(value);
+					break;
+				} else {
+					inputSelector.value = value;
+					break;
+				}
+			}
 
 		case 'class':
-			document.getElementsByClassName(selector.value)[0].value = value;
-			break;
-
+			var inputSelector = document.getElementsByClassName(selector.value)[0];
+			if(inputSelector){
+				if(inputSelector.type === 'number'){
+					inputSelector.value = parseInt(value);
+					break;
+				} else {
+					inputSelector.value = value;
+					break;
+				}
+			}
+			
 		default:
-			console.log('The data-selector attribute is not set');
+			console.error('The data-selector attribute is not set correctly');
 	}
 
 }

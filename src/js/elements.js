@@ -27,7 +27,6 @@ export const createElementsAttributes = () => {
 	container = document.getElementById('sliderz'); 
 
 	// Grab container attributes
-	d_dividers = container.dataset.dividers;
 	d_id = container.dataset.id || null;
 	d_class = container.dataset.class || null;
 	d_min = container.dataset.min;

@@ -38,3 +38,20 @@
   margin: auto;
   z-index: 999;
 }
+
+.divider{
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  top: 10px;
+  background: #555;
+}
+
+input {
+  display: block;
+  margin: auto;
+  width: 50px;
+  text-align: center;
+  border: 3px solid lightblue;
+  height: 23px;
+}

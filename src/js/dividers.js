@@ -23,7 +23,8 @@ export const addDividers = () => {
 
 	// Get range values
 	let d_min = container.dataset.min;
-	let d_dividers = container.dataset.dividers;
+	let steps = container.dataset.step;
+	let d_dividers = Math.ceil((parseInt(container.dataset.max)) / steps);
 
 	// Grab track
 	let track = document.getElementById('sliderz_track')
@@ -42,11 +43,7 @@ export const addDividers = () => {
 		// Create element and basic style
 		let divider = document.createElement('div');
 		divider.classList.add('divider');
-		divider.style.position = 'absolute';
 		divider.style.width = '2px';
-		divider.style.height = '10px';
-		divider.style.top = '10px';
-		divider.style.background = '#000';
 		divider.style.left = `${spacing + 1}px`;
 		
 		// Add each unit of separation between dividers to dividerLoacations
@@ -61,6 +58,10 @@ export const addDividers = () => {
 
 		// Add divider to track
 		track.appendChild(divider);
+
+		// Clear divider width.  It was needed to align the dividers initially
+		// but removed as to let it be styled by user without having to use !important
+		divider.style.width = '';
 	}
 	allocateDataLocations();
 }

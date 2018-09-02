@@ -2,8 +2,12 @@ import { dividerLocations } from './dividers';
 import * as el from './elements';
 import { setCurrentValueOfDataLocation } from './data';
 
-// Flag head on mouse down event
-let head_MD = false;
+// This object will hold the mouse state on head
+export const head_mouse_obj = {
+	down: false,
+	move: false,
+	up: true
+}
 
 // Current divider location index to adjust head position
 let headPositionIndex;
@@ -45,6 +49,7 @@ export const snapHeadToTrack = (e) => {
 		// relative to track
 		if(e.target.id !== 'sliderz_track'){
 			rect = e.target.offsetParent.getBoundingClientRect();
+
 		} else {
 			rect = e.target.getBoundingClientRect();
 		}
@@ -89,9 +94,40 @@ export const snapHeadToTrack = (e) => {
 	setCurrentValueOfDataLocation(headPositionIndex);
 }
 
-export const dragHead = (e) => {
-
+export const mouse_down = (e) => {
+	head_mouse_obj.up = false;
+	head_mouse_obj.down = true;
+	startX = e.clientX;
 }
+
+export const mouse_up = (e) => {
+	console.log('UUUUPUPPPPPPP!!!!!')
+	head_mouse_obj.down = false;
+	head_mouse_obj.up = true;
+}
+
+export const mouse_move = (e) => {
+	moveHead(e);
+	let startX = e.clientX;
+}
+
+let startX;
+let lastX;
+let diffX;
+export const moveHead = (e) => {
+	console.log('TEST', el.sliderz_head.style.left)
+	if(head_mouse_obj.down){
+		lastX = e.clientX;
+		diffX = lastX - startX;
+		
+		let currentX = parseInt(sliderz_head.style.left);
+		let newX = currentX + diffX;
+		console.log('move', diffX, 'current: ', newX);
+		sliderz_head.style.left = `${newX}px`;
+	}
+}
+
+
 
 
 
