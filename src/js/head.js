@@ -101,7 +101,6 @@ export const mouse_down = (e) => {
 }
 
 export const mouse_up = (e) => {
-	console.log('UUUUPUPPPPPPP!!!!!')
 	head_mouse_obj.down = false;
 	head_mouse_obj.up = true;
 }
@@ -115,14 +114,12 @@ let startX;
 let lastX;
 let diffX;
 export const moveHead = (e) => {
-	console.log('TEST', el.sliderz_head.style.left)
 	if(head_mouse_obj.down){
 		lastX = e.clientX;
 		diffX = lastX - startX;
 		
 		let currentX = parseInt(sliderz_head.style.left);
 		let newX = currentX + diffX;
-		console.log('move', diffX, 'current: ', newX);
 		sliderz_head.style.left = `${newX}px`;
 	}
 }
