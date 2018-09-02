@@ -2,6 +2,7 @@ import { createElementsAttributes } from './elements';
 import * as listeners from './event_listeners';
 import { addDividers } from './dividers';
 
+module.exports.sliderz = () => {console.log('test')}
 document.addEventListener("DOMContentLoaded", function(event) { 
 	// Create all elements for sliders
 	createElementsAttributes();
