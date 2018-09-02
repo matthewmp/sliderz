@@ -26,14 +26,17 @@ Lastly add the id, class, or jQuery selector of the input element that will reco
     data-id="id of input element" data-class="class of input element" data-jq="jQuery selector"
 
 If there are more than one selector attribute Sliderz will follow the following order of precedence:
+	
 	1. jQuery Selector
+	
 	2. ID
+	
 	3. Class
 
-The html should look something like this:
+Below is the html that has built the slider shown in the gif above:
     
-    <div id="sliderz" data-min="1" data-max="20" data-step="1" data-id="inputTarget"></div>
-    <input id="inputTarget" type="number">
+    <div id="sliderz" data-min="1" data-max="6" data-step="1" data-id="inp_val"></div>
+	<input type="text" id="inp_val">
 
 The input target will reflect any change to the slider and show it's value.
 
