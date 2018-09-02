@@ -27,11 +27,11 @@ Lastly add the id, class, or jQuery selector of the input element that will reco
 
 If there are more than one selector attribute Sliderz will follow the following order of precedence:
 	
-	1. jQuery Selector
-	
-	2. ID
-	
-	3. Class
+1. jQuery Selector
+
+2. ID
+
+3. Class
 
 Below is the html that has built the slider shown in the gif above:
     
