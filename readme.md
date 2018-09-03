@@ -41,7 +41,7 @@ Below is the html that has built the slider shown in the gif above:
 
 The input target will reflect any change to the slider and show it's value.
 
-# Live Example
+# Live Demo
 Click [here](https://matthewmp.github.io/sliderz/) to try it for yourself.
 
 
