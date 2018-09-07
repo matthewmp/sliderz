@@ -14,7 +14,7 @@ export const addDividers = () => {
 	// Remove all existing dividers
 	if(existingDividers){
 			while(existingDividers[0]){
-			existingDividers[0].parentNode.children[1].remove();
+			existingDividers[0].parentNode.removeChild(existingDividers[0]);
 		}
 	}
 
