@@ -1,0 +1,57 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Wrapper div of entire sliderz component */
+#sliderz_wrapper{
+  position: relative;
+  display: block;
+  width: 50%;
+  height: 20px;
+  margin: 100px auto;
+}
+
+/* Track */
+#sliderz_track{
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  display: block;
+  width: 100%;
+  height: 10px;
+  background: lightblue;
+  cursor: pointer;
+}
+
+/* Head */
+#sliderz_head{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: lightblue;
+  width: 10px;
+  height: 30px;
+  border: 1px solid green;
+  margin: auto;
+  z-index: 999;
+}
+
+.divider{
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  top: 10px;
+  background: #555;
+}
+
+input {
+  display: block;
+  margin: auto;
+  width: 50px;
+  text-align: center;
+  border: 3px solid lightblue;
+  height: 23px;
+}
