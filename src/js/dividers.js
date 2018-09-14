@@ -24,14 +24,16 @@ export const addDividers = () => {
 	// Get range values
 	let d_min = container.dataset.min;
 	let steps = container.dataset.step;
-	let d_dividers = Math.ceil((parseInt(container.dataset.max)) / steps);
+	let d_dividers = Math.round((parseInt(container.dataset.max)) / steps);
 
 	// Grab track
 	let track = document.getElementById('sliderz_track')
-
+	console.log('Track Width: ', track.offsetWidth);
 	// Calculate space between dividers
-	let initialLength = Math.ceil(track.offsetWidth / d_dividers - 1);
+	let initialLength = track.offsetWidth / d_dividers;
+	console.log('Initial Length: ', initialLength);
 	let dividersLength = initialLength + (initialLength / d_dividers);
+	console.log('Dividers Length: ', dividersLength);
 	let spacing = 0;
 
 	// Clear divider locations
@@ -39,7 +41,7 @@ export const addDividers = () => {
 
 	// Add correct amount of dividers with equal spacing
 	for(let i = 0; i < d_dividers; i++){
-		
+		console.log('Spacing: ', spacing);
 		// Create element and basic style
 		let divider = document.createElement('div');
 		divider.classList.add('divider');

@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Activate all listeners
 	listeners.resizeListener();
 	listeners.track_listener();
-	listeners.head_listener_down();
-	listeners.head_listener_move();
-	listeners.track_listener_up();
+	// listeners.head_listener_down();
+	// listeners.head_listener_move();
+	// listeners.track_listener_up();
 
 	// Add dividers to slider
 	addDividers();
